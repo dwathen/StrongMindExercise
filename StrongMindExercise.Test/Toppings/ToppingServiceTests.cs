@@ -1,5 +1,5 @@
 ﻿namespace StrongMindExercise.Test.Toppings;
-public class ToppingTests
+public class ToppingServiceTests
 {
 
     [Fact]

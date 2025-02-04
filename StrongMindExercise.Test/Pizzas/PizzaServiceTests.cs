@@ -1,5 +1,5 @@
 ﻿namespace StrongMindExercise.Test.Pizzas;
-public class PizzaTests
+public class PizzaServiceTests
 {
     [Fact]
     public void GetAllPizzas_ShouldReturnAllToppings()

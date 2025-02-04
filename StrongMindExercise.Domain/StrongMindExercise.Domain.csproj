@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Toppings\" />
-    <Folder Include="Pizzas\" />
-  </ItemGroup>
-
 </Project>

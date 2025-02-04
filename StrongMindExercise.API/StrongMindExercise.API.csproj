@@ -16,13 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Toppings\" />
-    <Folder Include="Pizzas\" />
+    <ProjectReference Include="..\StrongMindExercise.Application\StrongMindExercise.Application.csproj" />
+    <ProjectReference Include="..\StrongMindExercise.Persistence\StrongMindExercise.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StrongMindExercise.Application\StrongMindExercise.Application.csproj" />
-    <ProjectReference Include="..\StrongMindExercise.Persistence\StrongMindExercise.Persistence.csproj" />
+    <Folder Include="Pizzas\" />
+    <Folder Include="Toppings\" />
   </ItemGroup>
 
 </Project>
