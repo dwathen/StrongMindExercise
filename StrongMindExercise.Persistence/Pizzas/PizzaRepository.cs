@@ -1,35 +1,42 @@
-﻿using StrongMindExercise.Domain.Pizzas;
+﻿using Microsoft.EntityFrameworkCore;
+using StrongMindExercise.Domain.Pizzas;
+using StrongMindExercise.Persistence.Contexts;
 
 namespace StrongMindExercise.Persistence.Pizzas;
 public class PizzaRepository : IPizzaRepository
 {
-    public Task AddAsync(Pizza pizza)
+    private readonly StrongMindExerciseDbContext _context;
+
+    public PizzaRepository(StrongMindExerciseDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task DeleteAsync(Pizza pizza)
+    public async Task<IEnumerable<Pizza>> GetAllAsync() =>
+        await _context.Pizzas.Include(p => p.Toppings).ToListAsync();
+
+    public async Task<Pizza> GetByIdAsync(int id) =>
+        await _context.Pizzas.Include(p => p.Toppings).FirstOrDefaultAsync(p => p.Id == id);
+
+    public async Task<Pizza> GetByNameAsync(string name) =>
+        await _context.Pizzas.Include(p => p.Toppings)
+            .FirstOrDefaultAsync(p => p.Name.ToUpper() == name.ToUpper());
+
+    public async Task AddAsync(Pizza pizza)
     {
-        throw new NotImplementedException();
+        _context.Pizzas.Add(pizza);
+        await _context.SaveChangesAsync();
     }
 
-    public Task<IEnumerable<Pizza>> GetAllAsync()
+    public async Task UpdateAsync(Pizza pizza)
     {
-        throw new NotImplementedException();
+        _context.Pizzas.Update(pizza);
+        await _context.SaveChangesAsync();
     }
 
-    public Task<Pizza> GetByIdAsync(int id)
+    public async Task DeleteAsync(Pizza pizza)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<Pizza> GetByNameAsync(string name)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateAsync(Pizza pizza)
-    {
-        throw new NotImplementedException();
+        _context.Pizzas.Remove(pizza);
+        await _context.SaveChangesAsync();
     }
 }

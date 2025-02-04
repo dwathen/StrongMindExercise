@@ -106,6 +106,22 @@ public class ToppingServiceTests
     }
 
     [Fact]
+    public async Task UpdateToppingAsync_ShouldReturnFailure_WhenNotExists()
+    {
+        // Arrange
+        int toppingId = 1;
+        _mockToppingRepository.Setup(repo => repo.GetByIdAsync(toppingId)).ReturnsAsync((Topping)null);
+        ToppingUpdateDTO toppingUpdateDTO = new ToppingUpdateDTO { Id = toppingId, Name = "Pepperoni" };
+
+        // Act
+        var result = await _toppingService.DeleteToppingAsync(toppingId);
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.Equal(CommonErrors.ObjectCannotBeFound("Topping").Code, result.Error.Code);
+    }
+
+    [Fact]
     public async Task DeleteToppingAsync_ShouldDeleteTopping_WhenExists()
     {
         // Arrange
