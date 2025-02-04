@@ -32,19 +32,19 @@ public class ToppingService
         return Result<ToppingReadDTO>.Success(MapToDTO(topping));
     }
 
-    public async Task<Result> UpdateToppingAsync(ToppingUpdateDTO toppingUpdateTO)
+    public async Task<Result> UpdateToppingAsync(ToppingUpdateDTO toppingUpdateDTO)
     {
-        var result = await ValidateEntry(toppingUpdateTO.Name);
+        var result = await ValidateEntry(toppingUpdateDTO.Name, toppingUpdateDTO.Id);
 
         if (result.IsFailure)
             return result;
 
-        var topping = await _toppingRepository.GetByIdAsync(toppingUpdateTO.Id);
+        var topping = await _toppingRepository.GetByIdAsync(toppingUpdateDTO.Id);
 
         if (topping is null)
             return Result.Failure(CommonErrors.ObjectCannotBeFound("Topping"));
 
-        topping.Name = toppingUpdateTO.Name;
+        topping.Name = toppingUpdateDTO.Name;
         await _toppingRepository.UpdateAsync(topping);
         return Result.Success();
     }
@@ -70,14 +70,17 @@ public class ToppingService
         };
     }
 
-    private async Task<Result> ValidateEntry(string name)
+    private async Task<Result> ValidateEntry(string name, int? id = null)
     {
         if (string.IsNullOrWhiteSpace(name))
             return Result.Failure(CommonErrors.NameCannotBeNullOrBlank);
 
         var existing = await _toppingRepository.GetByNameAsync(name);
 
-        if (existing != null)
+        if (existing != null && id == null)
+            return Result.Failure(CommonErrors.NameCannotBeDuplicate);
+
+        if (existing != null && id != null && existing.Id != id)
             return Result.Failure(CommonErrors.NameCannotBeDuplicate);
 
         return Result.Success();

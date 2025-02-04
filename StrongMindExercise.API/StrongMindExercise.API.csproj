@@ -20,9 +20,4 @@
     <ProjectReference Include="..\StrongMindExercise.Persistence\StrongMindExercise.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pizzas\" />
-    <Folder Include="Toppings\" />
-  </ItemGroup>
-
 </Project>

@@ -44,7 +44,7 @@ public class PizzaService
 
     public async Task<Result> UpdatePizzaAsync(PizzaUpdateDTO pizzaUpdateDTO)
     {
-        var result = await ValidateEntry(pizzaUpdateDTO.Name, pizzaUpdateDTO.ToppingIds);
+        var result = await ValidateEntry(pizzaUpdateDTO.Name, pizzaUpdateDTO.ToppingIds, pizzaUpdateDTO.Id);
 
         if (result.IsFailure)
             return result;
@@ -96,14 +96,17 @@ public class PizzaService
         };
     }
 
-    private async Task<Result> ValidateEntry(string name, List<int>? toppingIds = null)
+    private async Task<Result> ValidateEntry(string name, List<int>? toppingIds = null, int? id = null)
     {
         if (string.IsNullOrWhiteSpace(name))
             return Result.Failure(CommonErrors.NameCannotBeNullOrBlank);
 
         var existing = await _pizzaRepository.GetByNameAsync(name);
 
-        if (existing != null)
+        if (existing != null && id == null)
+            return Result.Failure(CommonErrors.NameCannotBeDuplicate);
+
+        if (existing != null && id != null && existing.Id != id)
             return Result.Failure(CommonErrors.NameCannotBeDuplicate);
 
         var hasDuplicates = toppingIds is not null &&
