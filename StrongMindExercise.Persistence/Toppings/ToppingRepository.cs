@@ -1,35 +1,41 @@
-﻿using StrongMindExercise.Domain.Toppings;
+﻿using Microsoft.EntityFrameworkCore;
+using StrongMindExercise.Domain.Toppings;
+using StrongMindExercise.Persistence.Contexts;
 
 namespace StrongMindExercise.Persistence.Toppings;
 public class ToppingRepository : IToppingRepository
 {
-    public Task AddAsync(Topping topping)
+    private readonly StrongMindExerciseDbContext _context;
+
+    public ToppingRepository(StrongMindExerciseDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task DeleteAsync(Topping topping)
+    public async Task<IEnumerable<Topping>> GetAllAsync() =>
+        await _context.Toppings.ToListAsync();
+
+    public async Task<Topping> GetByIdAsync(int id) =>
+        await _context.Toppings.FindAsync(id);
+
+    public async Task<Topping> GetByNameAsync(string name) =>
+        await _context.Toppings.FirstOrDefaultAsync(t => t.Name.ToUpper() == name.ToUpper());
+
+    public async Task AddAsync(Topping topping)
     {
-        throw new NotImplementedException();
+        _context.Toppings.Add(topping);
+        await _context.SaveChangesAsync();
     }
 
-    public Task<IEnumerable<Topping>> GetAllAsync()
+    public async Task UpdateAsync(Topping topping)
     {
-        throw new NotImplementedException();
+        _context.Toppings.Update(topping);
+        await _context.SaveChangesAsync();
     }
 
-    public Task<Topping> GetByIdAsync(int id)
+    public async Task DeleteAsync(Topping topping)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<Topping> GetByNameAsync(string name)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateAsync(Topping topping)
-    {
-        throw new NotImplementedException();
+        _context.Toppings.Remove(topping);
+        await _context.SaveChangesAsync();
     }
 }
