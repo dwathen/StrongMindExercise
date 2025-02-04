@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pizzas\Components\" />
+    <Folder Include="Pizzas\Pages\" />
+    <Folder Include="Toppings\Components\" />
+    <Folder Include="Toppings\Pages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MudBlazor" Version="8.2.0" />
+  </ItemGroup>
+
 </Project>
