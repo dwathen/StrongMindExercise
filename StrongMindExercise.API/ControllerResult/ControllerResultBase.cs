@@ -26,7 +26,7 @@ public class ControllerResultBase : ControllerBase
         return BadRequest(result.Error);
     }
 
-    protected IActionResult HandleResult(Result result)
+    protected ActionResult HandleResult(Result result)
     {
         if (result.Error == null)
         {

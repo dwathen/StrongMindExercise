@@ -1,5 +1,6 @@
 using MudBlazor.Services;
 using StrongMindExercise.WebUI.Components;
+using StrongMindExercise.WebUI.Toppings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddMudServices();
+builder.Services.AddScoped<ToppingWebService>();
 
 var app = builder.Build();
 

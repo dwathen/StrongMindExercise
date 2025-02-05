@@ -12,9 +12,14 @@ public class ToppingService
         this._toppingRepository = toppingRepository;
     }
 
-    public async Task<IEnumerable<ToppingReadDTO>> GetAllToppingsAsync() =>
-        (await _toppingRepository.GetAllAsync())
-    .Select(t => MapToDTO(t));
+    public async Task<Result<List<ToppingReadDTO>>> GetAllToppingsAsync()
+    {
+        var toppings = (await _toppingRepository.GetAllAsync())
+            .Select(t => MapToDTO(t)).ToList();
+
+        return Result<List<ToppingReadDTO>>.Success(toppings);
+    }
+        
 
     public async Task<Result<ToppingReadDTO>> CreateToppingAsync(ToppingCreateDTO toppingCreateDTO)
     {

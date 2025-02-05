@@ -7,14 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pizzas\Components\" />
-    <Folder Include="Pizzas\Pages\" />
-    <Folder Include="Toppings\Components\" />
-    <Folder Include="Toppings\Pages\" />
+    <PackageReference Include="MudBlazor" Version="8.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MudBlazor" Version="8.2.0" />
+    <ProjectReference Include="..\StrongMindExercise.Application\StrongMindExercise.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pizzas\Pages\" />
   </ItemGroup>
 
 </Project>

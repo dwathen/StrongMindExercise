@@ -16,12 +16,18 @@ public class ToppingController : ControllerResultBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ToppingReadDTO>>> GetToppings()
+    public async Task<ActionResult<List<ToppingReadDTO>>> GetToppings()
     {
         try
         {
-            var toppings = await _toppingService.GetAllToppingsAsync();
-            return Ok(toppings);
+            var result = await _toppingService.GetAllToppingsAsync();
+
+            if (result.IsFailure)
+            {
+                return HandleResult(result);
+            }
+
+            return Ok(result.Data);
         }
         catch (Exception ex)
         {

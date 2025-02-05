@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongMindExercise.API", "StrongMindExercise.API\StrongMindExercise.API.csproj", "{425CAECC-3B04-4B54-A99A-BBCAE571EDB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrongMindExercise.API", "StrongMindExercise.API\StrongMindExercise.API.csproj", "{425CAECC-3B04-4B54-A99A-BBCAE571EDB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongMindExercise.Application", "StrongMindExercise.Application\StrongMindExercise.Application.csproj", "{CBF2C0D6-51AA-406E-9991-2ACE9517A249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrongMindExercise.Application", "StrongMindExercise.Application\StrongMindExercise.Application.csproj", "{CBF2C0D6-51AA-406E-9991-2ACE9517A249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongMindExercise.Domain", "StrongMindExercise.Domain\StrongMindExercise.Domain.csproj", "{0D5C4CE0-C24A-4C02-9108-A9E75A03996F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrongMindExercise.Domain", "StrongMindExercise.Domain\StrongMindExercise.Domain.csproj", "{0D5C4CE0-C24A-4C02-9108-A9E75A03996F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongMindExercise.Persistence", "StrongMindExercise.Persistence\StrongMindExercise.Persistence.csproj", "{D55092C8-77A6-4A80-8E18-1E5C107DF4E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrongMindExercise.Persistence", "StrongMindExercise.Persistence\StrongMindExercise.Persistence.csproj", "{D55092C8-77A6-4A80-8E18-1E5C107DF4E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongMindExercise.WebUI", "StrongMindExercise.WebUI\StrongMindExercise.WebUI.csproj", "{E2382284-9D01-4E87-A8F8-333C8547F49B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrongMindExercise.WebUI", "StrongMindExercise.WebUI\StrongMindExercise.WebUI.csproj", "{E2382284-9D01-4E87-A8F8-333C8547F49B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongMindExercise.Test", "StrongMindExercise.Test\StrongMindExercise.Test.csproj", "{6061AFC5-36A4-485A-A1D2-A56E6747EEDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrongMindExercise.Test", "StrongMindExercise.Test\StrongMindExercise.Test.csproj", "{6061AFC5-36A4-485A-A1D2-A56E6747EEDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

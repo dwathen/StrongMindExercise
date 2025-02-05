@@ -32,9 +32,9 @@ public class ToppingServiceTests
         var result = await _toppingService.GetAllToppingsAsync();
 
         // Assert
-        Assert.Equal(2, result.Count());
-        Assert.Contains(result, t => t.Name == "Pepperoni");
-        Assert.Contains(result, t => t.Name == "Mushrooms");
+        Assert.Equal(2, result.Data.Count());
+        Assert.Contains(result.Data, t => t.Name == "Pepperoni");
+        Assert.Contains(result.Data, t => t.Name == "Mushrooms");
     }
 
     [Fact]
