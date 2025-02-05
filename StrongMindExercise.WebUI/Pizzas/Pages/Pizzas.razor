@@ -1,0 +1,35 @@
+﻿@page "/Pizzas"
+
+@if (this.pizzas is not null)
+{
+    <div class="container">
+        <MudPaper Style="margin: 20px;" Class="pa-4">
+            <MudText Class="text-center" Style="padding: 30px;" Typo="Typo.h2">Pizzas</MudText>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@OpenCreateDialog" Class="mb-4">
+                Add Pizza
+            </MudButton>
+
+            <MudTable Items="pizzas" Hover="true">
+                <HeaderContent>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Toppings</MudTh>
+                    <MudTh>Actions</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Toppings">@string.Join(", ", context.Toppings.Select(t => t.Name))</MudTd>
+                    <MudTd DataLabel="Actions">
+                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" OnClick="@(() => OpenEditDialog(context))" />
+                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => DeletePizza(context))" />
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudPaper>
+    </div>
+}
+else
+{
+    <div style="position: absolute; left: 50%; top: 40%">
+        <MudProgressCircular Color="Color.Default" Style="margin: auto; height: 120px; width: 120px;" Indeterminate="true" />
+    </div>
+}

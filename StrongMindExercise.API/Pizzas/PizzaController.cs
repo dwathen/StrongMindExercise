@@ -16,12 +16,18 @@ public class PizzaController : ControllerResultBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<PizzaReadDTO>>> GetToppings()
+    public async Task<ActionResult<List<PizzaReadDTO>>> GetPizzas()
     {
         try
         {
-            var toppings = await _pizzaService.GetAllPizzasAsync();
-            return Ok(toppings);
+            var result = await _pizzaService.GetAllPizzasAsync();
+
+            if (result.IsFailure)
+            {
+                return HandleResult(result);
+            }
+
+            return Ok(result.Data);
         }
         catch (Exception ex)
         {
@@ -30,7 +36,7 @@ public class PizzaController : ControllerResultBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<PizzaReadDTO>> CreateTopping([FromBody] PizzaCreateDTO pizzaCreateDTO)
+    public async Task<ActionResult<PizzaReadDTO>> CreatePizza([FromBody] PizzaCreateDTO pizzaCreateDTO)
     {
         try
         {
@@ -41,7 +47,7 @@ public class PizzaController : ControllerResultBase
                 return HandleResult(result);
             }
 
-            return CreatedAtAction(nameof(GetToppings), new { result.Data.Name });
+            return CreatedAtAction(nameof(GetPizzas), new { result.Data.Name });
         }
         catch (Exception ex)
         {
@@ -50,7 +56,7 @@ public class PizzaController : ControllerResultBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateTopping([FromBody] PizzaUpdateDTO pizzaUpdateDTO)
+    public async Task<IActionResult> UpdatePizza([FromBody] PizzaUpdateDTO pizzaUpdateDTO)
     {
         try
         {
@@ -70,7 +76,7 @@ public class PizzaController : ControllerResultBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTopping(int id)
+    public async Task<IActionResult> DeletePizza(int id)
     {
         try
         {

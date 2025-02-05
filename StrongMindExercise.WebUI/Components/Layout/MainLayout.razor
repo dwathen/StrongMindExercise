@@ -10,6 +10,12 @@
 @* Needed for snackbars *@
 <MudSnackbarProvider />
 
+<MudAppBar Color="Color.Primary" Fixed="false">
+    <MudIconButton Icon="@Icons.Material.Filled.Home" Color="Color.Inherit" Edge="Edge.Start" OnClick="NavigateToHome" />
+    <MudSpacer />
+    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" OnClick="NavigateToGitHub" />
+</MudAppBar>
+
 @Body
 
 <div id="blazor-error-ui">

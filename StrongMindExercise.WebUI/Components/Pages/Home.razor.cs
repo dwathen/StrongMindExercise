@@ -9,11 +9,11 @@ public partial class Home
 
     public void NavigateToToppings()
     {
-        NavigationManager.NavigateTo("/toppings");
+        NavigationManager.NavigateTo("/Toppings");
     }
 
     public void NavigateToPizzas()
     {
-        NavigationManager.NavigateTo("/pizzas");
+        NavigationManager.NavigateTo("/Pizzas");
     }
 }

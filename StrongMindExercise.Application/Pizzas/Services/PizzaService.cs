@@ -16,9 +16,14 @@ public class PizzaService
         this._toppingRepository = toppingRepository;
     }
 
-    public async Task<IEnumerable<PizzaReadDTO>> GetAllPizzasAsync() =>
-        (await _pizzaRepository.GetAllAsync())
-    .Select(t => MapToDTO(t));
+    public async Task<Result<List<PizzaReadDTO>>> GetAllPizzasAsync()
+    {
+        var pizzas = (await _pizzaRepository.GetAllAsync())
+            .Select(t => MapToDTO(t));
+
+        return Result<List<PizzaReadDTO>>.Success(pizzas.ToList());
+    }
+        
 
     public async Task<Result<PizzaReadDTO>> CreatePizzaAsync(PizzaCreateDTO pizzaCreateDTO)
     {

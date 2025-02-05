@@ -1,0 +1,20 @@
+﻿@using StrongMindExercise.Application.Toppings.DTOs
+
+@if (Toppings is not null)
+{
+    <MudDialog>
+        <DialogContent>
+            <MudTextField @bind-Value="pizzaName" Label="Pizza Name" Required="true" />
+            <MudSelect T="string" Label="Toppings" MultiSelection="true" @bind-SelectedValues="SelectedToppings">
+                @foreach (var topping in Toppings.Select(t => t.Name))
+                {
+                    <MudSelectItem Value="@topping">@topping</MudSelectItem>
+                }
+            </MudSelect>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="Save" Color="Color.Primary" Variant="Variant.Filled">Save</MudButton>
+            <MudButton OnClick="Cancel" Color="Color.Secondary" Variant="Variant.Text">Cancel</MudButton>
+        </DialogActions>
+    </MudDialog>
+}

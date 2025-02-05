@@ -34,9 +34,9 @@ public class PizzaServiceTests
         var result = await _pizzaService.GetAllPizzasAsync();
 
         // Assert
-        Assert.Equal(2, result.Count());
-        Assert.Contains(result, p => p.Name == "Mushroom");
-        Assert.Contains(result, p => p.Name == "Pepperoni");
+        Assert.Equal(2, result.Data.Count());
+        Assert.Contains(result.Data, p => p.Name == "Mushroom");
+        Assert.Contains(result.Data, p => p.Name == "Pepperoni");
     }
 
     [Fact]

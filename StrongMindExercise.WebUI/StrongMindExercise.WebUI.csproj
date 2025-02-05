@@ -14,8 +14,4 @@
     <ProjectReference Include="..\StrongMindExercise.Application\StrongMindExercise.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pizzas\Pages\" />
-  </ItemGroup>
-
 </Project>
